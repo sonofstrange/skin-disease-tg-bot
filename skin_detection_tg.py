@@ -28,7 +28,7 @@ from PIL import Image, ImageOps
 
 # ===================== НАСТРОЙКИ =====================
 
-TOKEN = "6975262890:AAHAg683tPj9jGcLILhpbAKnmaSd10QFz3c"
+TOKEN = "YOUR_TONEK_HERE"
 
 img_count = 0
 
