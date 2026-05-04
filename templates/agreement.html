@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Соглашение — CheckSkin{% endblock %}
+{% block nav_block %}{% endblock %}
+
+{% block extra_css %}
+.agree-box{max-width:660px;margin:30px auto}
+.agree-text{background:#fff;border:1px solid #d5d8dc;border-radius:6px;padding:16px;max-height:50vh;overflow-y:auto;font-size:.86em;line-height:1.7;white-space:pre-wrap;margin:12px 0}
+.agree-btns{display:flex;gap:10px}
+{% endblock %}
+
+{% block content %}
+<div class="agree-box">
+    <h2>Пользовательское соглашение</h2>
+    {% if error %}<div class="alert-err">{{ error }}</div>{% endif %}
+    <div class="agree-text">{{ text }}</div>
+    <form method="POST" class="agree-btns">
+        <button type="submit" name="choice" value="agree" class="btn btn-green">Согласен</button>
+        <button type="submit" name="choice" value="disagree" class="btn btn-gray">Не согласен</button>
+    </form>
+</div>
+{% endblock %}

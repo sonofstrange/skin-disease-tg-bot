@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Результат — CheckSkin{% endblock %}
+
+{% block extra_css %}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+.info-box{background:#f8f9fa;border:1px solid #e5e7eb;border-radius:6px;padding:12px}
+.info-box strong{display:block;margin-bottom:4px;color:#2c3e50}
+.info-box p{font-size:.88em;color:#555;line-height:1.5}
+.badge{display:inline-block;padding:3px 10px;border-radius:10px;font-size:.85em;font-weight:bold}
+.b-high{background:#d5f5e3;color:#1e8449}
+.b-med{background:#fef9e7;color:#7d6608}
+.b-low{background:#fdedec;color:#922b21}
+.warn{background:#fef9e7;border:1px solid #f0c040;border-radius:5px;padding:10px;font-size:.88em;color:#7a5c00;margin-top:10px}
+.verdict-btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+@media(max-width:560px){.info-grid{grid-template-columns:1fr}}
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap">
+        <h2>Результат анализа</h2>
+        <span class="badge b-{{ level }}">{{ pct }}% уверенность</span>
+    </div>
+
+    {% if photo_count and photo_count > 1 %}
+    <p style="color:#555;font-size:.9em;margin:6px 0">Результат усреднён по {{ photo_count }} фото</p>
+    {% endif %}
+
+    <h3 style="color:#2c3e50;margin:10px 0;font-size:1.25em">{{ info.name }}</h3>
+
+    {% if uncertain %}
+    <div class="warn">
+        Уверенность модели невысока. Результат следует воспринимать с осторожностью.
+        {% if top2_class %}
+        Возможно также: {{ top2_class }} ({{ top2_conf }}%).
+        {% endif %}
+    </div>
+    {% endif %}
+
+    {% if confusion_warning %}
+    <div class="warn">{{ confusion_warning }}</div>
+    {% endif %}
+
+    <div class="info-grid">
+        <div class="info-box"><strong>Описание</strong><p>{{ info.description }}</p></div>
+        <div class="info-box"><strong>Рекомендации</strong><p>{{ info.recommendations }}</p></div>
+        <div class="info-box"><strong>Профилактика</strong><p>{{ info.prevention }}</p></div>
+        <div class="info-box"><strong>Серьёзность</strong><p>{{ info.severity }}</p></div>
+    </div>
+
+    <div class="warn">{{ info.warning }}</div>
+</div>
+
+<div class="card">
+    <h3>Правильно ли определён диагноз?</h3>
+    <p style="color:#555;font-size:.9em">Ваш ответ поможет улучшить точность ИИ</p>
+    <div class="verdict-btns">
+        <a href="{{ url_for('verdict', action='confirm', f=filename) }}" class="btn btn-green">Диагноз подтвердился</a>
+        <a href="{{ url_for('verdict', action='select', f=filename) }}" class="btn btn-red">Диагноз не тот</a>
+    </div>
+</div>
+
+<div style="text-align:center;margin-top:10px">
+    <a href="{{ url_for('upload') }}" class="btn btn-outline">Загрузить другое фото</a>
+</div>
+{% endblock %}
