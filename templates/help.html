@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Справка — CheckSkin{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>Справка</h2>
+
+    <h3 style="margin-top:14px">Разделы сайта</h3>
+    <ul style="margin:6px 0 14px 18px;line-height:1.9">
+        <li><a href="{{ url_for('dashboard') }}">Главная</a> — обзор и навигация</li>
+        <li><a href="{{ url_for('upload') }}">Анализ</a> — загрузка фото и получение результата</li>
+        <li><a href="{{ url_for('photo_guide') }}">Как фотографировать</a> — советы для точного результата</li>
+    </ul>
+
+    <h3>Как пользоваться</h3>
+    <ol style="margin:6px 0 14px 18px;line-height:1.9">
+        <li>Откройте раздел «Анализ».</li>
+        <li>Выберите файлы с фотографиями кожи (до 4 штук — результат усреднится).</li>
+        <li>Нажмите «Анализировать» и подождите несколько секунд.</li>
+        <li>Ознакомьтесь с результатом, описанием и рекомендациями.</li>
+        <li>Подтвердите или скорректируйте диагноз — это помогает улучшать ИИ.</li>
+    </ol>
+
+    <div style="background:#fef9e7;border:1px solid #f0c040;border-radius:5px;padding:10px;color:#7a5c00;font-size:.88em">
+        Сервис носит информационный характер. Время обработки — несколько секунд.
+    </div>
+</div>
+{% endblock %}

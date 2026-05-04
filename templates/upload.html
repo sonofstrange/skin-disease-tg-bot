@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Загрузка фото — CheckSkin{% endblock %}
+
+{% block extra_css %}
+.upload-zone{border:2px dashed #aab;border-radius:8px;padding:30px;text-align:center;background:#fafbfc}
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>Загрузите фотографию</h2>
+    <br>
+    {% if error %}<div class="alert-err">{{ error }}</div>{% endif %}
+
+    <form method="POST" enctype="multipart/form-data">
+        <div class="upload-zone">
+            <p style="color:#777;margin-bottom:12px">Выберите файлы изображений (до 4 штук — результат усреднится)</p>
+            <input type="file" name="images" accept="image/*" required multiple
+                   style="margin-bottom:12px">
+            <br>
+            <button type="submit" class="btn btn-blue" style="padding:10px 30px">Анализировать</button>
+        </div>
+    </form>
+
+    <div style="margin-top:14px;background:#fef9e7;border:1px solid #f0c040;border-radius:5px;padding:10px;font-size:.88em;color:#7a5c00">
+        Обработка может занять несколько секунд. Не закрывайте страницу.
+    </div>
+</div>
+{% endblock %}

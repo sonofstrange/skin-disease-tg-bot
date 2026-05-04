@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Как фотографировать — CheckSkin{% endblock %}
+
+{% block extra_css %}
+.step{display:flex;gap:12px;margin-bottom:12px;align-items:flex-start}
+.step-n{background:#3498db;color:#fff;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0;font-size:.9em}
+.step p{color:#555;font-size:.9em;margin-top:2px}
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>Как правильно фотографировать</h2>
+    <br>
+    <div class="step">
+        <span class="step-n">1</span>
+        <div><strong>Центрируйте проблемный участок</strong>
+        <p>Подозрительная область должна быть в центре кадра.</p></div>
+    </div>
+    <div class="step">
+        <span class="step-n">2</span>
+        <div><strong>Расстояние 20-30 см</strong>
+        <p>Держите камеру на этом расстоянии от кожи.</p></div>
+    </div>
+    <div class="step">
+        <span class="step-n">3</span>
+        <div><strong>Хорошее освещение</strong>
+        <p>Снимайте при естественном свете, без резких теней.</p></div>
+    </div>
+    <div class="step">
+        <span class="step-n">4</span>
+        <div><strong>Чёткость</strong>
+        <p>Убедитесь, что фото не смазано. Можно отправить до 4 фото — результат усреднится.</p></div>
+    </div>
+</div>
+{% endblock %}

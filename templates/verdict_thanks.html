@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Спасибо — CheckSkin{% endblock %}
+
+{% block content %}
+<div class="card" style="text-align:center;padding:30px">
+    <h2>Спасибо за ваш ответ!</h2>
+    <p style="color:#555;margin:10px 0">Это поможет нам улучшить точность работы ИИ.</p>
+    <div style="margin-top:16px;display:flex;gap:10px;justify-content:center">
+        <a href="{{ url_for('upload') }}" class="btn btn-blue">Загрузить ещё фото</a>
+        <a href="{{ url_for('dashboard') }}" class="btn btn-outline">На главную</a>
+    </div>
+</div>
+{% endblock %}

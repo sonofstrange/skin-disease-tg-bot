@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Выбор диагноза — CheckSkin{% endblock %}
+
+{% block extra_css %}
+.diag-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>Выберите правильный диагноз</h2>
+    <p style="color:#555;font-size:.9em;margin-top:4px">Какое заболевание у вас на самом деле?</p>
+
+    <h3 style="margin-top:16px">Основные</h3>
+    <div class="diag-list">
+        {% for key, label in diagnoses.items() %}
+        <a href="{{ url_for('verdict', action='select', f=filename, d=key) }}" class="btn btn-outline">{{ label }}</a>
+        {% endfor %}
+    </div>
+
+    <h3 style="margin-top:16px">Другие распространённые</h3>
+    <div class="diag-list">
+        {% for key, label in popular.items() %}
+        <a href="{{ url_for('verdict', action='select', f=filename, d=key) }}" class="btn btn-outline" style="border-color:#e67e22;color:#e67e22">{{ label }}</a>
+        {% endfor %}
+    </div>
+</div>
+
+<div style="text-align:center;margin-top:10px">
+    <a href="{{ url_for('dashboard') }}" class="btn btn-gray btn-sm">На главную</a>
+</div>
+{% endblock %}
